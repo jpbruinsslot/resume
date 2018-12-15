@@ -3,7 +3,8 @@ default: build
 # -timeout 	timout in seconds
 #  -v		verbose output
 test:
-	go test -timeout=5s -v
+	@ echo "+ $@"
+	@ go test -timeout=5s -v
 
 # `CGO_ENABLED=0`
 # Because of dynamically linked libraries, this will statically compile the
@@ -30,6 +31,7 @@ test:
 # `.`
 # Location of the source files
 build:
-	CGO_ENABLED=0 go build -a -installsuffix cgo -o ./bin/resume ./src/
+	@ echo "+ $@"
+	@ CGO_ENABLED=0 go build -a -installsuffix cgo -o ./bin/resume .
 
 .PHONY: default test build

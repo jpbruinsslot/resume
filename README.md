@@ -11,16 +11,17 @@ Example:
 Usage
 -----
 
-To run the application we'll be using Docker, you can also run this application
-on the commandline and I provided a binary for linux amd64 based systems in the
-`bin/` folder.
+#### Docker
 
 ```bash
-$ git clone git@github.com:erroneousboat/resume.git
-$ cd resume
-$ docker build -t resume . && docker run -p 80:80 -it resume
+$ docker run -p 80:80 erroneousboat/resume
 $ curl http://localhost/resume
 ```
+
+#### Command line
+
+You can also run this application on the commandline and I provided a binary
+for linux amd64 based systems in the `bin/` folder.
 
 Configuration
 -------------
@@ -33,10 +34,16 @@ You'll be able to configure some settings, mainly:
 | `USER`   | set username for basic authentication                |
 | `PASS`   | set password for basic authentication                |
 
-In conjunction with docker:
+A full example:
 
 ```bash
-$ docker run -p 8080:8080 --env PORT=8080 --env USER=show --env PASS=me -it resume
+$ docker run -p 8080:8080 \
+    --env PORT=8080 \
+    --env USER=show \
+    --env PASS=me \
+    -v path-to-resume.tmpl:/resume.tmpl \
+    erroneousboat/resume
+
 $ curl http://localhost:8080/resume -u show:me
 ```
 

@@ -30,9 +30,9 @@ You'll be able to configure some settings, mainly:
 
 | Var    | Explanation                                          |
 |--------|------------------------------------------------------|
-| `PORT`   | set the port on which the application will be served |
-| `USER`   | set username for basic authentication                |
-| `PASS`   | set password for basic authentication                |
+| `PORT` | set the port on which the application will be served |
+| `USER` | set username for basic authentication                |
+| `PASS` | set password for basic authentication                |
 
 A full example:
 

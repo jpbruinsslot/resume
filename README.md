@@ -21,7 +21,7 @@ $ curl http://localhost/resume
 #### Command line
 
 You can also run this application from the commandline, and I provided a
-binary for linux amd64 based systems [here](https://github.com/erroneosboat/resume).
+binary for linux amd64 based systems [here](https://github.com/erroneosboat/resume/releases).
 
 Configuration
 -------------

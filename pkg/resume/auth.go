@@ -1,4 +1,4 @@
-package main
+package resume
 
 import "net/http"
 

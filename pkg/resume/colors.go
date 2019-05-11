@@ -1,4 +1,4 @@
-package main
+package resume
 
 import "github.com/mgutz/ansi"
 

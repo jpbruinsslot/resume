@@ -32,6 +32,7 @@ test:
 # Location of the source files
 build:
 	@ echo "+ $@"
-	@ CGO_ENABLED=0 go build -a -installsuffix cgo -o ./bin/resume .
+	@ go mod vendor
+	@ CGO_ENABLED=0 go build -mod=vendor -a -installsuffix cgo -o ./bin/resume ./cmd/resume
 
 .PHONY: default test build

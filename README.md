@@ -31,6 +31,7 @@ You'll be able to configure some settings, mainly:
 | Var    | Explanation                                          |
 |--------|------------------------------------------------------|
 | `PORT` | set the port on which the application will be served |
+| `PATH` | set the url path                                     |
 | `USER` | set username for basic authentication                |
 | `PASS` | set password for basic authentication                |
 
@@ -39,6 +40,7 @@ A full example:
 ```bash
 $ docker run -p 8080:8080 \
     --env PORT=8080 \
+    --env PATH=/resume \
     --env USER=show \
     --env PASS=me \
     -v path-to-resume.tmpl:/resume.tmpl \

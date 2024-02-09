@@ -12,7 +12,7 @@ import (
 func InitServer(flgPort, flgPath, flgTemplate, flgUser, flgPass string) {
 	colors := GetANSIColors()
 
-	tmpl, err := template.New(flgTemplate).Funcs(funcs).ParseFiles(flgTemplate)
+	tmpl, err := template.New(flgTemplate).Funcs(Funcs).ParseFiles(flgTemplate)
 	if err != nil {
 		log.Fatal(err)
 	}

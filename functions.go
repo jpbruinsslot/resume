@@ -6,7 +6,7 @@ import (
 )
 
 // FuncMap is the template.FuncMap for the templates
-var funcs = template.FuncMap{
+var Funcs = template.FuncMap{
 
 	// "wrap" is a function that wraps a string to a given width
 	"wrap": func(s string, width int) string {

@@ -11,7 +11,7 @@ Create an online resume that can be accessed by a `curl` command.
 ### Binary installation
 
 [Download](https://github.com/jpbruinsslot/resume/releases) a
-compatible binary for your system. For convenience, place `weather` in a
+compatible binary for your system. For convenience, place `resume` in a
 directory where you can access it from the command line.
 
 ### Via Go

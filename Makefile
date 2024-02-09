@@ -1,6 +1,6 @@
 default: build
 
-# -timeout 	timout in seconds
+# -timeout 	timeout in seconds
 #  -v		verbose output
 test:
 	@ echo "+ $@"
@@ -28,11 +28,22 @@ test:
 # `./bin/[name-of-app]`
 # Placement of the binary
 #
-# `.`
-# Location of the source files
+# `./cmd/[name-of-app]`
+# Location of the cmd package
 build:
 	@ echo "+ $@"
-	@ go mod vendor
-	@ CGO_ENABLED=0 go build -mod=vendor -a -installsuffix cgo -o ./bin/resume ./cmd/resume
+	@ CGO_ENABLED=0 go build -a -installsuffix cgo -o ./bin/resume ./cmd/resume
 
-.PHONY: default test build
+build-linux:
+	@ echo "+ $@"
+	@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o ./bin/resume-linux-amd64 ./cmd/resume
+
+build-darwin:
+	@ echo "+ $@"
+	@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -installsuffix cgo -o ./bin/resume-darwin-amd64 ./cmd/resume
+
+build-windows:
+	@ echo "+ $@"
+	@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -a -installsuffix cgo -o ./bin/resume-windows-amd64 ./cmd/resume
+
+.PHONY: default test build build-linux build-darwin build-windows

@@ -1,14 +1,15 @@
-FROM golang:1.13 AS builder
-WORKDIR /go/src/github.com/erroneousboat/resume
+FROM golang:1.21 AS builder
+WORKDIR /go/src/github.com/jpbruinsslot/resume
 COPY . .
 RUN go get -d -v ./...
 RUN make build
-RUN ls ./bin/
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add \
+    ca-certificates
+
 WORKDIR /root/
-COPY --from=builder /go/src/github.com/erroneousboat/resume/bin/resume /usr/bin/resume
+COPY --from=builder /go/src/github.com/jpbruinsslot/resume/bin/resume /usr/bin/resume
 COPY ./resume.tmpl .
 
 ENV PORT 80

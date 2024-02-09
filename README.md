@@ -1,60 +1,76 @@
-Resume
-======
+# 📄 Resume
 
 Create an online resume that can be accessed by a `curl` command.
 
-Example:
+## 📸 Screenshot
 
 ![Screenshot](/screenshot.png?raw=true)
 
+## 📦 Installation
 
-Usage
------
+### Binary installation
 
-#### Docker
+[Download](https://github.com/jpbruinsslot/resume/releases) a
+compatible binary for your system. For convenience, place `weather` in a
+directory where you can access it from the command line.
 
-```bash
-$ docker run -p 80:80 erroneousboat/resume
-$ curl http://localhost/resume
+### Via Go
+
+```text
+$ go install github.com/jpbruinsslot/resume/cmd/resume@latest
 ```
 
-#### Command line
+### Via Docker
 
-You can also run this application from the commandline, and I provided a
-binary for linux amd64 based systems [here](https://github.com/erroneosboat/resume/releases).
+```
+$ docker build  -t resume .
+```
 
-Configuration
--------------
+## 💻 Usage
 
-You'll be able to configure some settings, mainly:
+### Command line
 
-| Var    | Explanation                                          |
-|--------|------------------------------------------------------|
-| `PORT` | set the port on which the application will be served |
-| `PATH` | set the url path                                     |
-| `USER` | set username for basic authentication                |
-| `PASS` | set password for basic authentication                |
+```
+$ resume \
+    -port 8080 \
+    -path /resume \
+    -user show \
+    -pass me
+$ curl http://localhost:8080/resume -u show:me
+```
 
-A full example:
+### Docker
 
-```bash
+```
 $ docker run -p 8080:8080 \
     --env PORT=8080 \
     --env PATH=/resume \
     --env USER=show \
     --env PASS=me \
     -v path-to-resume.tmpl:/resume.tmpl \
-    erroneousboat/resume
-
+    resume
 $ curl http://localhost:8080/resume -u show:me
 ```
 
-Template
---------
+## 🔧 Configuration
+
+## Arguments
+
+You'll be able to pass some arguments to the application
+
+| Argument   | Description                                    |
+| ---------- | ---------------------------------------------- |
+| `port`     | port to serve on (default: 80)                 |
+| `path`     | optional url path (default: /)                 |
+| `template` | filename of template (default: resume.tmpl)    |
+| `user`     | username used for authentication (default: "") |
+| `pass`     | password used for authentication (default: "") |
+
+## Templating
 
 The [`resume.tmpl`](./resume.tmpl) has an example of how you could structure your resume. To
 see what colors you'll be able to use, inspect the [`colors.go`](./colors.go) file.
 
 For more color styles, you can use the function
-``{{.ColorCode "your-style-here"}}`` in the template. See https://github.com/mgutz/ansi#style-format
+`{{.ColorCode "your-style-here"}}` in the template. See https://github.com/mgutz/ansi#style-format
 for the style format.
